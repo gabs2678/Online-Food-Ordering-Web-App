@@ -22,14 +22,14 @@ $verified = $row['verified'];
   <meta name="msapplication-tap-highlight" content="no">
   <title>Provide Order Details</title>
 
-  <!-- Favicons-->
-  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-  <!-- Favicons-->
-  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-  <!-- For iPhone -->
+  
+  <link rel="icon" href="images/favicon/favicon1.png" sizes="32x32">
+  
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/favicon1.png">
+  
   <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
-  <!-- For Windows Phone -->
+  <meta name="msapplication-TileImage" content="images/favicon/favicon1.png">
+ 
 
 
   <!-- CORE CSS-->
@@ -38,7 +38,7 @@ $verified = $row['verified'];
   <!-- Custome CSS-->    
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+ 
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
        <style type="text/css">
   .input-field div.error{
@@ -105,8 +105,7 @@ $verified = $row['verified'];
                       <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
                     <ul class="right hide-on-med-and-down">                        
-                        <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"><?php echo $balance;?></i></a>
-                        </li>
+                         
                     </ul>						
                 </div>
             </nav>
@@ -224,7 +223,7 @@ $verified = $row['verified'];
 							<label for="payment_type">Payment Type</label><br><br>
 							<select id="payment_type" name="payment_type">
 									<option value="Wallet" selected>Wallet</option>
-									<option value="Cash On Delivery" <?php if(!$verified) echo 'disabled';?>>Cash on Delivery</option>							
+									<option value="Cash On Delivery" <?php if(!$verified) echo 'disable';?>>Cash on Delivery</option>							
 							</select>
                         </div>
                       </div>					
@@ -264,7 +263,7 @@ $verified = $row['verified'];
 					  <?php
 					  	foreach ($_POST as $key => $value)
 						{
-							if($key == 'action' || $value == ''){
+							if($key == 'action'){
 								break;
 							}
 							echo '<input name="'.$key.'" type="hidden" value="'.$value.'">';
@@ -298,9 +297,9 @@ $verified = $row['verified'];
 		
 	foreach ($_POST as $key => $value)
 	{
-		if($value == ''){
-			break;
-		}
+		if ($value == '') {
+      $value = 0;
+    }
 		if(is_numeric($key)){
 		$result = mysqli_query($con, "SELECT * FROM items WHERE id = $key");
 		while($row = mysqli_fetch_array($result))
@@ -309,7 +308,9 @@ $verified = $row['verified'];
 			$item_name = $row['name'];
 			$item_id = $row['id'];
 		}
-			$price = $value*$price;
+    if($value!=0)
+    {
+      $price = $value*$price;
 			    echo '<li class="collection-item">
         <div class="row">
             <div class="col s7">
@@ -319,11 +320,12 @@ $verified = $row['verified'];
                 <span>'.$value.' Pieces</span>
             </div>
             <div class="col s3">
-                <span>Rs. '.$price.'</span>
+                <span>RD$ '.$price.'</span>
             </div>
         </div>
     </li>';
 		$total = $total + $price;
+    }
 	}
 	}
     echo '<li class="collection-item">
@@ -335,7 +337,7 @@ $verified = $row['verified'];
                 <span>&nbsp;</span>
             </div>
             <div class="col s3">
-                <span><strong>Rs. '.$total.'</strong></span>
+                <span><strong>RD$ '.$total.'</strong></span>
             </div>
         </div>
     </li>';
@@ -369,8 +371,7 @@ $verified = $row['verified'];
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+        <span class="right">Copyright © 2023 <a class="grey-text text-lighten-4" href="#" target="_blank">Deya's Foods and Restaurant</a> All rights reserved.</span>
         </div>
     </div>
   </footer>
@@ -378,9 +379,7 @@ $verified = $row['verified'];
 
 
 
-    <!-- ================================================
-    Scripts
-    ================================================ -->
+   
     
     <!-- jQuery Library -->
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
@@ -393,9 +392,9 @@ $verified = $row['verified'];
     <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>	
 	<script type="text/javascript" src="js/plugins/formatter/jquery.formatter.min.js"></script>   
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+  
     <script type="text/javascript" src="js/plugins.min.js"></script>
-    <!--custom-script.js - Add your own theme custom JS-->
+   
     <script type="text/javascript" src="js/custom-script.js"></script>
 	<script type="text/javascript">
     $("#formValidate").validate({
@@ -439,11 +438,11 @@ $verified = $row['verified'];
      });
 	  $('#cc_number').formatter({
           'pattern': '{{9999}}-{{9999}}-{{9999}}-{{9999}}',
-          'persistent': true
+          'persistent': false
       });
 	  $('#cvv_number').formatter({
           'pattern': '{{9}}-{{9}}-{{9}}',
-          'persistent': true
+          'persistent': false
       });
 		$('#payment_type').change(function() {
 		if ($(this).val() === 'Cash On Delivery') {

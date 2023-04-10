@@ -15,14 +15,14 @@ include 'includes/connect.php';
   <meta name="msapplication-tap-highlight" content="no">
   <title>Food Menu</title>
 
-  <!-- Favicons-->
-  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-  <!-- Favicons-->
-  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-  <!-- For iPhone -->
+ 
+  <link rel="icon" href="images/favicon/favicon1.png" sizes="32x32">
+ 
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/favicon1.png">
+ 
   <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
-  <!-- For Windows Phone -->
+  <meta name="msapplication-TileImage" content="images/favicon/favicon1.png">
+ 
 
 
   <!-- CORE CSS-->
@@ -31,7 +31,7 @@ include 'includes/connect.php';
   <!-- Custome CSS-->    
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+  
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   
@@ -97,7 +97,7 @@ include 'includes/connect.php';
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                      <li><h1 class="logo-wrapper"><a href="http://localhost/Online-Food-Ordering-Web-App" class="brand-logo darken-1">HOME</a> <span class="logo-text"></span></h1></li>
                     </ul>
                 </div>
             </nav>
@@ -185,10 +185,7 @@ include 'includes/connect.php';
       <!-- START CONTENT -->
       <section id="content">
 
-        <!--breadcrumbs start-->
-        
-        <!--breadcrumbs end-->
-
+       
 
         <!--start container-->
         <div class="container">
@@ -205,6 +202,8 @@ include 'includes/connect.php';
                         <th>Name</th>
                         <th>Item Price/Piece</th>
                         <th>Image</th>
+                        <th>Delete</th>
+                      
                       </tr>
                     </thead>
 
@@ -227,8 +226,22 @@ include 'includes/connect.php';
 						$text2 = 'selected';						
 					}
 					echo '
-					<img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div>
-                    </td></tr>';
+					<img height="150" width="180"  src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div>
+                    </td>';
+                    echo '<td><div class="input-field col s12 "><label for="'.$row["id"].'_hide"></label>';
+                    echo '<select id="'.$row["id"].'_hide" name="'.$row['id'].'_hide" data-error=".errorTxt'.$row["id"].'">';
+                    if($row['deleted'] == 0){
+                        echo '<option value="0" selected>Not deleted</option>';
+                        echo '<option value="1">Deleted</option>';
+                    }
+                    else{
+                        echo '<option value="0">Not deleted</option>';
+                        echo '<option value="1" selected>Deleted</option>';
+                    }
+                    echo '</select><div class="errorTxt'.$row["id"].'"></div></td>';
+                    echo '</tr>';
+                    
+                    
 				}
 				?>
                     </tbody>
@@ -300,8 +313,7 @@ include 'includes/connect.php';
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+        <span class="right">Copyright © 2023 <a class="grey-text text-lighten-4" href="#" target="_blank">Deya's Foods and Restaurant</a> All rights reserved.</span>
         </div>
     </div>
   </footer>
@@ -309,9 +321,7 @@ include 'includes/connect.php';
 
 
 
-    <!-- ================================================
-    Scripts
-    ================================================ -->
+ 
     
     
     <!-- jQuery Library -->
@@ -329,9 +339,9 @@ include 'includes/connect.php';
     <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
     
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+   
     <script type="text/javascript" src="js/plugins.min.js"></script>
-    <!--custom-script.js - Add your own theme custom JS-->
+    
     <script type="text/javascript" src="js/custom-script.js"></script>
 	    <script type="text/javascript">
     $("#formValidate").validate({
@@ -364,7 +374,7 @@ include 'includes/connect.php';
 				},';
 				echo $row["id"].'_price:{
 				required: "Ener price of item",
-				min: "Minimum item price is Rs. 0"
+				min: "Minimum item price is RD$ 0"
 				},';				
 			}
 		echo '},';
@@ -399,7 +409,7 @@ include 'includes/connect.php';
 			},
 		 price: {
 				required: "Enter item price",
-				minlength: "Minimum item price is Rs.0"
+				minlength: "Minimum item price is RD$ 0"
 			},
 	},
 		errorElement : 'div',

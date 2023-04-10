@@ -16,14 +16,14 @@ else{
   <meta name="msapplication-tap-highlight" content="no">
   <title>Login</title>
 
-  <!-- Favicons-->
-  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-  <!-- Favicons-->
-  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-  <!-- For iPhone -->
+  
+  <link rel="icon" href="images/favicon/favicon1.png" sizes="32x32">
+  
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/favicon1.png">
+  
   <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
-  <!-- For Windows Phone -->
+  <meta name="msapplication-TileImage" content="images/favicon/favicon1.png">
+  
 
 
   <!-- CORE CSS-->
@@ -34,7 +34,7 @@ else{
     <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="css/layouts/page-center.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
   
 </head>
@@ -89,9 +89,7 @@ else{
 
 
 
-  <!-- ================================================
-    Scripts
-    ================================================ -->
+ 
 
   <!-- jQuery Library -->
   <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>
@@ -100,9 +98,9 @@ else{
   <!--scrollbar-->
   <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 
-      <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+     
     <script type="text/javascript" src="js/plugins.min.js"></script>
-    <!--custom-script.js - Add your own theme custom JS-->
+   
     <script type="text/javascript" src="js/custom-script.js"></script>
 
 </body>

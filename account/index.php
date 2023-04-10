@@ -15,14 +15,14 @@ include 'includes/wallet.php';
   <meta name="msapplication-tap-highlight" content="no">
   <title>Order Food</title>
 
-  <!-- Favicons-->
-  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-  <!-- Favicons-->
-  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-  <!-- For iPhone -->
+  
+  <link rel="icon" href="images/favicon/favicon1.png" sizes="32x32">
+
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/favicon1.png">
+ 
   <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
-  <!-- For Windows Phone -->
+  <meta name="msapplication-TileImage" content="images/favicon/favicon1.png">
+  
 
 
   <!-- CORE CSS-->
@@ -30,7 +30,7 @@ include 'includes/wallet.php';
   <link href="css/style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   <!-- Custome CSS-->    
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
-  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+ 
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="js/plugins/data-tables/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" media="screen,projection">
   
@@ -96,12 +96,9 @@ include 'includes/wallet.php';
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                      <li><h1 class="logo-wrapper"><a href="http://localhost/Online-Food-Ordering-Web-App" class="brand-logo darken-1">HOME</a> <span class="logo-text"></span></h1></li>
                     </ul>
-                    <ul class="right hide-on-med-and-down">                        
-                        <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"><?php echo $balance;?></i></a>
-                        </li>
-                    </ul>					
+                    <!-- right top corner-->				
                 </div>
             </nav>
         </div>
@@ -188,10 +185,7 @@ include 'includes/wallet.php';
       <!-- START CONTENT -->
       <section id="content">
 
-        <!--breadcrumbs start-->
         
-        <!--breadcrumbs end-->
-
 
         <!--start container-->
         <div class="container">
@@ -217,7 +211,7 @@ include 'includes/wallet.php';
 				$result = mysqli_query($con, "SELECT * FROM items where not deleted;");
 				while($row = mysqli_fetch_array($result))
 				{
-					echo '<tr><td>'.$row["name"].'</td><td><img src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"></td><td>'.$row["price"].'</td>';                      
+					echo '<tr><td>'.$row["name"].'</td><td><img height="150" width="180" src="data:image/jpeg;base64,'.base64_encode($row['image']).'" id="'.$row["id"].'_image" name="'.$row['id'].'_image" type="file" data-error=".errorTxt'.$row["id"].'"></td><td>'.$row["price"].'</td>';                      
 					echo '<td><div class="input-field col s12"><label for='.$row["id"].' class="">Quantity</label>';
 					echo '<input id="'.$row["id"].'" name="'.$row['id'].'" type="text" data-error=".errorTxt'.$row["id"].'"><div class="errorTxt'.$row["id"].'"></div></td></tr>';
 				}
@@ -259,8 +253,7 @@ include 'includes/wallet.php';
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+        <span class="right">Copyright © 2023 <a class="grey-text text-lighten-4" href="#" target="_blank">Deya's Foods and Restaurant</a> All rights reserved.</span>
         </div>
     </div>
   </footer>
@@ -268,10 +261,7 @@ include 'includes/wallet.php';
 
 
 
-    <!-- ================================================
-    Scripts
-    ================================================ -->
-    
+  
     <!-- jQuery Library -->
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
     <!--angularjs-->
@@ -287,9 +277,9 @@ include 'includes/wallet.php';
     <script type="text/javascript" src="js/plugins/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="js/plugins/jquery-validation/additional-methods.min.js"></script>
     
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    
     <script type="text/javascript" src="js/plugins.min.js"></script>
-    <!--custom-script.js - Add your own theme custom JS-->
+   
     <script type="text/javascript" src="js/custom-script.js"></script>
     <script type="text/javascript">
     $("#formValidate").validate({

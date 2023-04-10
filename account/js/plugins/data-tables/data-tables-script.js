@@ -7,6 +7,7 @@ $(document).ready(function(){
 			searching: false,
 		    paging: false,
 			ordering: false,
+            
 	});	
     var table = $('#data-table-row-grouping').DataTable({
         "columnDefs": [

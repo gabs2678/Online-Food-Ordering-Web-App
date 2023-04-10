@@ -5,21 +5,6 @@ $continue=0;
 $total = 0;
 if($_SESSION['customer_sid']==session_id())
 {
-		if($_POST['payment_type'] == 'Wallet'){
-		$_POST['cc_number'] = str_replace('-', '', $_POST['cc_number']);
-		$_POST['cc_number'] = str_replace(' ', '', $_POST['cc_number']); 
-		$_POST['cvv_number'] = (int)str_replace('-', '', $_POST['cvv_number']);
-		$sql1 = mysqli_query($con, "SELECT * FROM wallet_details where wallet_id = $wallet_id");
-		while($row1 = mysqli_fetch_array($sql1)){
-			$card = $row1['number'];
-			$cvv = $row1['cvv'];
-			if($card == $_POST['cc_number'] && $cvv==$_POST['cvv_number'])
-			$continue=1;
-			else
-				header("location:index.php");
-		}
-		}
-		else
 			$continue=1;
 }
 
@@ -42,14 +27,14 @@ if($continue){
   <meta name="msapplication-tap-highlight" content="no">
   <title>Provide Order Details</title>
 
-  <!-- Favicons-->
-  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-  <!-- Favicons-->
-  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-  <!-- For iPhone -->
+
+  <link rel="icon" href="images/favicon/favicon1.png" sizes="32x32">
+ 
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/favicon1.png">
+  
   <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
-  <!-- For Windows Phone -->
+  <meta name="msapplication-TileImage" content="images/favicon/favicon1.png">
+  
 
 
   <!-- CORE CSS-->
@@ -83,8 +68,7 @@ if($continue){
                       <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
                     </ul>
                     <ul class="right hide-on-med-and-down">                        
-                        <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"><?php echo $balance;?></i></a>
-                        </li>
+                         
                     </ul>					
                 </div>
             </nav>
@@ -205,29 +189,35 @@ if($continue){
 		
 	foreach ($_POST as $key => $value)
 	{
-		if(is_numeric($key)){		
-		$result = mysqli_query($con, "SELECT * FROM items WHERE id = $key");
-		while($row = mysqli_fetch_array($result))
-		{
-			$price = $row['price'];
-			$item_name = $row['name'];
-			$item_id = $row['id'];
-		}
-			$price = $value*$price;
-			    echo '<li class="collection-item">
-        <div class="row">
-            <div class="col s7">
-                <p class="collections-title"><strong>#'.$item_id.' </strong>'.$item_name.'</p>
-            </div>
-            <div class="col s2">
-                <span>'.$value.' Pieces</span>
-            </div>
-            <div class="col s3">
-                <span>Rs. '.$price.'</span>
-            </div>
-        </div>
-    </li>';
-		$total = $total + $price;
+        if ($value == '') {
+            $value = 0;
+          }
+              if(is_numeric($key)){
+              $result = mysqli_query($con, "SELECT * FROM items WHERE id = $key");
+              while($row = mysqli_fetch_array($result))
+              {
+                  $price = $row['price'];
+                  $item_name = $row['name'];
+                  $item_id = $row['id'];
+              }
+          if($value!=0)
+          {
+            $price = $value*$price;
+                      echo '<li class="collection-item">
+              <div class="row">
+                  <div class="col s7">
+                      <p class="collections-title"><strong>#'.$item_id.' </strong>'.$item_name.'</p>
+                  </div>
+                  <div class="col s2">
+                      <span>'.$value.' Pieces</span>
+                  </div>
+                  <div class="col s3">
+                      <span>RD$ '.$price.'</span>
+                  </div>
+              </div>
+          </li>';
+              $total = $total + $price;
+          }
 	}
 	}
     echo '<li class="collection-item">
@@ -239,25 +229,14 @@ if($continue){
                 <span>&nbsp;</span>
             </div>
             <div class="col s3">
-                <span><strong>Rs. '.$total.'</strong></span>
+                <span><strong>RD$ '.$total.'</strong></span>
             </div>
         </div>
     </li>';
 	if(!empty($_POST['description']))
 		echo '<li class="collection-item avatar"><p><strong>Note: </strong>'.htmlspecialchars($_POST['description']).'</p></li>';
-	if($_POST['payment_type'] == 'Wallet')
-	echo '<div id="basic-collections" class="section">
-		<div class="row">
-			<div class="collection">
-				<a href="#" class="collection-item">
-					<div class="row"><div class="col s7">Current Balance</div><div class="col s3">'.$balance.'</div></div>
-				</a>
-				<a href="#" class="collection-item active">
-					<div class="row"><div class="col s7">Balance after purchase</div><div class="col s3">'.($balance-$total).'</div></div>
-				</a>
-			</div>
-		</div>
-	</div>';
+	
+        
 ?>
 <form action="routers/order-router.php" method="post">
 <?php
@@ -274,7 +253,7 @@ foreach ($_POST as $key => $value)
 <?php if($_POST['payment_type'] == 'Wallet') echo '<input type="hidden" name="balance" value="<?php echo ($balance-$total);?>">'; ?>
 <input type="hidden" name="total" value="<?php echo $total;?>">
 <div class="input-field col s12">
-<button class="btn cyan waves-effect waves-light right" type="submit" name="action" <?php if($_POST['payment_type'] == 'Wallet') {if ($balance-$total < 0) {echo 'disabled'; }}?>>Confirm Order
+<button class="btn cyan waves-effect waves-light right" type="submit" name="action" <?php if($_POST['payment_type'] == 'Wallet') {if ($balance-$total < 0) {echo 'enabled'; }}?>>Confirm Order
 <i class="mdi-content-send right"></i>
 </button>
 </div>
@@ -306,18 +285,13 @@ foreach ($_POST as $key => $value)
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+        <span class="right">Copyright © 2023 <a class="grey-text text-lighten-4" href="#" target="_blank">Deya's Foods and Restaurant</a> All rights reserved.</span>
         </div>
     </div>
   </footer>
     <!-- END FOOTER -->
 
 
-
-    <!-- ================================================
-    Scripts
-    ================================================ -->
     
     <!-- jQuery Library -->
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
@@ -327,9 +301,9 @@ foreach ($_POST as $key => $value)
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <!--scrollbar-->
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script> 
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+   
     <script type="text/javascript" src="js/plugins.min.js"></script>
-    <!--custom-script.js - Add your own theme custom JS-->
+    
     <script type="text/javascript" src="js/custom-script.js"></script>
 </body>
 

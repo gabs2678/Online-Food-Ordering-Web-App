@@ -32,14 +32,14 @@ if($continue){
   <meta name="msapplication-tap-highlight" content="no">
   <title>Ticket No. <?php echo $ticket_id.' - '. $type;?></title>
 
-  <!-- Favicons-->
-  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-  <!-- Favicons-->
-  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-  <!-- For iPhone -->
+
+  <link rel="icon" href="images/favicon/favicon1.png" sizes="32x32">
+  
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/favicon1.png">
+  
   <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
-  <!-- For Windows Phone -->
+  <meta name="msapplication-TileImage" content="images/favicon/favicon1.png">
+  
 
 
   <!-- CORE CSS-->
@@ -111,12 +111,9 @@ if($continue){
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                      <li><h1 class="logo-wrapper"><a href="http://localhost/Online-Food-Ordering-Web-App" class="brand-logo darken-1">HOME</a> <span class="logo-text"></span></h1></li>
                     </ul>
-                    <ul class="right hide-on-med-and-down">                        
-                        <li><a href="#" class="waves-effect waves-block waves-light"><i class="mdi-editor-attach-money"><?php echo $balance;?></i></a>
-                        </li>
-                    </ul>					
+                    <!-- right top corner-->				
                 </div>
             </nav>
         </div>
@@ -316,8 +313,7 @@ if($continue){
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+        <span class="right">Copyright © 2023 <a class="grey-text text-lighten-4" href="#" target="_blank">Deya's Foods and Restaurant</a> All rights reserved.</span>
         </div>
     </div>
   </footer>
@@ -325,9 +321,7 @@ if($continue){
 
 
 
-    <!-- ================================================
-    Scripts
-    ================================================ -->
+   
     
     <!-- jQuery Library -->
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
@@ -340,9 +334,9 @@ if($continue){
     
     <!--scrollbar-->
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script> 
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+ 
     <script type="text/javascript" src="js/plugins.min.js"></script>
-    <!--custom-script.js - Add your own theme custom JS-->
+
     <script type="text/javascript" src="js/custom-script.js"></script>
     <script type="text/javascript">
     $("#formValidate").validate({

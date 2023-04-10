@@ -17,9 +17,11 @@ $total = $_POST['total'];
 			{
 				$price = $row['price'];
 			}
+			if (is_numeric($value)) {
 				$price = $value*$price;
 			$sql = "INSERT INTO order_details (order_id, item_id, quantity, price) VALUES ($order_id, $key, $value, $price)";
 			$con->query($sql) === TRUE;		
+			}
 			}
 		}
 		if($_POST['payment_type'] == 'Wallet'){

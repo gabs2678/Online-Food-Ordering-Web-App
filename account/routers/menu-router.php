@@ -16,7 +16,7 @@ include '../includes/connect.php';
 			$con->query($sql);
 		}
 		if(preg_match("/[0-9]+_hide/",$key)){
-			if($_POST[$key] == 1){
+			if($_POST[$key] == '0'){
 			$key = strtok($key, '_');
 			$sql = "UPDATE items SET deleted = 0 WHERE id = $key;";
 			$con->query($sql);

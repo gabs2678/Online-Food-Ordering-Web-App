@@ -13,14 +13,14 @@ include 'includes/connect.php';
   <meta name="msapplication-tap-highlight" content="no">
   <title>All orders</title>
 
-  <!-- Favicons-->
-  <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
-  <!-- Favicons-->
-  <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
-  <!-- For iPhone -->
+  
+  <link rel="icon" href="images/favicon/favicon1.png" sizes="32x32">
+  
+  <link rel="apple-touch-icon-precomposed" href="images/favicon/favicon1.png">
+  
   <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="images/favicon/mstile-144x144.png">
-  <!-- For Windows Phone -->
+  <meta name="msapplication-TileImage" content="images/favicon/favicon1.png">
+ 
 
 
   <!-- CORE CSS-->
@@ -29,7 +29,7 @@ include 'includes/connect.php';
   <!-- Custome CSS-->    
   <link href="css/custom/custom.min.css" type="text/css" rel="stylesheet" media="screen,projection">
 
-  <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
+
   <link href="js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
  
 </head>
@@ -52,7 +52,7 @@ include 'includes/connect.php';
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="index.php" class="brand-logo darken-1"><img src="images/materialize-logo.png" alt="logo"></a> <span class="logo-text">Logo</span></h1></li>
+                      <li><h1 class="logo-wrapper"><a href="http://localhost/Online-Food-Ordering-Web-App" class="brand-logo darken-1">HOME</a> <span class="logo-text"></span></h1></li>
                     </ul>
                 </div>
             </nav>
@@ -230,7 +230,7 @@ include 'includes/connect.php';
                             <span>'.$row1['quantity'].' Pieces</span>
                             </div>
                             <div class="col s3">
-                            <span>Rs. '.$row1['price'].'</span>
+                            <span>RD$ '.$row1['price'].'</span>
                             </div>
                             </div>
                             </li>';
@@ -244,7 +244,7 @@ include 'includes/connect.php';
 											<span> </span>
                                             </div>
                                             <div class="col s3">
-                                                <span><strong>Rs. '.$row['total'].'</strong></span>
+                                                <span><strong>RD$ '.$row['total'].'</strong></span>
                                             </div>';										
 								if(!$deleted){
 								echo '<button class="btn waves-effect waves-light right submit" type="submit" name="action">Change Status
@@ -278,8 +278,7 @@ include 'includes/connect.php';
   <footer class="page-footer">
     <div class="footer-copyright">
       <div class="container">
-        <span>Copyright © 2017 <a class="grey-text text-lighten-4" href="#" target="_blank">Students</a> All rights reserved.</span>
-        <span class="right"> Design and Developed by <a class="grey-text text-lighten-4" href="#">Students</a></span>
+        <span class="right">Copyright © 2023 <a class="grey-text text-lighten-4" href="#" target="_blank">Deya's Foods and Restaurant</a> All rights reserved.</span>
         </div>
     </div>
   </footer>
@@ -287,9 +286,7 @@ include 'includes/connect.php';
 
 
 
-    <!-- ================================================
-    Scripts
-    ================================================ -->
+
     
     <!-- jQuery Library -->
     <script type="text/javascript" src="js/plugins/jquery-1.11.2.min.js"></script>    
@@ -299,9 +296,9 @@ include 'includes/connect.php';
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <!--scrollbar-->
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>       
-    <!--plugins.js - Some Specific JS codes for Plugin Settings-->
+    
     <script type="text/javascript" src="js/plugins.min.js"></script>
-    <!--custom-script.js - Add your own theme custom JS-->
+   
     <script type="text/javascript" src="js/custom-script.js"></script>
 </body>
 
